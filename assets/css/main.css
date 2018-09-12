@@ -1,0 +1,88 @@
+.container-menu {
+background-color: #313a73;
+}
+.container-menu .container-item{
+  color: white;
+}
+
+.title-section{
+  color: #01A2A6;
+  font-size: 40px;
+  font-weight: 600;
+  padding: 40px;
+  text-align: center;
+}
+
+.logo img{
+  width: 100%;
+  padding: 15px;
+}
+
+.container-item .item{
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 18px;
+font-weight: 600;
+
+}
+
+.container-item .item span{
+cursor: pointer;
+}
+
+#carouselExampleIndicators{
+
+}
+
+.item-proyectos  .item-p{
+  border-radius: 15px;
+  background-color: #ffffff;
+  padding: 0px;
+  margin: 15px;
+}
+
+.item-proyectos .item-p:hover{
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(146, 146, 146, 0.75);;
+-moz-box-shadow: 0px 3px 5px 0px rgba(146, 146, 146, 0.75);;
+box-shadow: 0px 3px 5px 0px rgba(146, 146, 146, 0.75);;
+}
+
+
+.item-p .imagen-p img{
+  width: 100%;
+}
+
+.name-proyect{
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
+  color: gray;
+  padding-top: 20px;
+}
+.name-city{
+  color: gray;
+  font-size: 13px;
+  text-align: center;
+}
+
+.valor{
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: gray;
+  padding: 14px;
+}
+.carateristicas{
+  margin: 0px !important;
+  background-color: #01A2A6;
+  border-radius: 0px 0px 15px 15px;
+  color: white;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.item-proyectos .item-p:hover .carateristicas{
+background-color: #313a73;
+}
