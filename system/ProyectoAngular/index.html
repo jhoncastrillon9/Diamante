@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>Prueba Angular</title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<p>El resultado de la suma 6 + 20 es: {{6 + 20}}</p>
+
+		<div class="col-sm-4">
+			<h6>Capturar Dato de input</h6>
+			<!--ng-model para especificar el dato-->
+			<input type="text" class="form-control form-control-sm" name="nombre" id="nombre" ng-model="nombre" placeholder="Ingresa tu nombre">
+			
+			<!--{{Nombre}} puedo capturar el dato... el busca el ng-model que sea nombre y lo pinta aca-->		
+			<span>Hola, {{nombre}}</span>
+
+			<!--ng-bind puedo capturar el dato el busca el ng-model que sea nombre y lo pinta aca-->
+			<h5>Bienvenido</h5>
+			<p ng-bind="nombre"></p>
+		</div>
+		<div class="col-sm-4">
+			<h6>Sumar Dos Numeros</h6>
+			<input type="number" class="form-control form-control-sm" name="number1" ng-model="number1" placeholder="Ingresa el numero1">
+			<br>
+			<input type="number" class="form-control form-control-sm" name="number2" ng-model="number2" placeholder="Ingresa el numero2">
+			<br>
+			<div>El Resultado de la suma es: {{number1 + number2}}</div>
+		</div>
+		<div class="col-sm-12" ng-model="productos =[{idproducto:'1', nombre:'disco duro', valor:250000},
+		{idproducto:'2', nombre:'Portatil Toshiba', valor:650000},
+		{idproducto:'3', nombre:'Pantalla LCD', valor:325000},
+		{idproducto:'4', nombre:'Smart TV', valor:980000},
+		{idproducto:'5', nombre:'All In One', valor:1247000},
+		{idproducto:'6', nombre:'Pc Escritorio', valor:852000}]">
+			<div class="row col-sm-12">
+					<div ng-repeat="producto in productos" class="col-sm-4">
+					
+					<div class="card" style="width: 18rem;">
+					  <div class="card-body">
+					    <h5 class="card-title">{{producto.nombre}}</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">Valor: {{producto.valor *120 /100 }}</h6>
+					    <p class="card-text">Referencia: {{producto.idproducto}}</p>
+					    <a href="#" class="card-link">Ver Màs</a>
+					    <a href="#" class="card-link">Eliminar</a>
+					  </div>
+					</div>	
+				</div>
+			</div>		
+		</div>
+	</div>
+</body>
+</html>

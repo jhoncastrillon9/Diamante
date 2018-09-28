@@ -2,9 +2,16 @@
 background-color: #313a73;
 }
 .container-menu .container-item{
-  color: white;
+  color: white !important;
 }
-
+.container-menu a{
+  color: white !important;
+  text-decoration: none;
+}
+.container-menu a:hover{
+  color: white !important;
+  text-decoration: none;
+}
 .title-section{
   color: #01A2A6;
   font-size: 40px;
@@ -53,6 +60,37 @@ box-shadow: 0px 3px 5px 0px rgba(146, 146, 146, 0.75);;
   width: 100%;
 }
 
+.container-nosotros{
+background-image: url(/diamante/assets/background2.jpg);
+padding-top: 70px;
+padding-bottom: 70px;
+background-size: cover;
+margin: 0 !important;
+}
+.container-nosotros .img-icon{
+text-align: center;
+}
+.container-nosotros .subtitle{
+  font-weight: 600;
+font-size: 30px;
+text-align: center;
+margin-top: 15px;
+color: #313a73;
+}
+.container-nosotros .text{
+text-align: justify;
+padding: 10px;
+color: #01A2A6;
+font-weight: 600;
+}
+.container-nosotros .img-icon img{
+  width: 200px;
+      height: 200px;
+      border-radius: 150px;
+      -webkit-border-radius: 150px;
+      -moz-border-radius: 150px;
+}
+
 .name-proyect{
   font-size: 30px;
   text-align: center;
@@ -85,4 +123,24 @@ box-shadow: 0px 3px 5px 0px rgba(146, 146, 146, 0.75);;
 
 .item-proyectos .item-p:hover .carateristicas{
 background-color: #313a73;
+}
+
+.footer{
+  color: white;
+  background-color: #313a73;
+  padding: 3%;
+
+}
+.footer .title{
+  color: #01A2A6;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.footer .info{
+  text-align: center;
+}
+
+.footer .row{
+  justify-content: center;
 }

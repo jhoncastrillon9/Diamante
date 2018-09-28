@@ -10,6 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="stylesheet" href="">
 		<link rel="stylesheet" href="<?php  echo base_url() ?>/assets/css/main.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link rel="icon" href="<?=base_url()?>/assets/log.ico" type="image/ico">
 	</head>
 	<body>
 		<div class="container-menu row cp">
@@ -17,20 +19,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<img src="<?php  echo base_url() ?>/assets/Logo_white-09.png" alt="">
 			</div>
 			<div class="container-item offset-sm-1 col-sm-7 row">
-				<div class="item col-2">
-					<span>Inicio</span>
+				<div class="item col-2" id="inicio">
+					<a href="#inicio">Inicio</a>
 				</div>
 				<div class="item col-2">
-					<span>Proyectos</span>
+					<a href="#proyectos">Proyectos</a>
 				</div>
 				<div class="item col-2">
-					<span>Nosotros</span>
+					<a href="#empresa">Nosotros</a>
 				</div>
 				<div class="item col-2">
 					<span>Pagos</span>
 				</div>
 				<div class="item col-2">
-					<span>Ingresos</span>
+					<span>Ingreso</span>
 				</div>
 			</div>
 		</div>
@@ -64,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 
-<div class="title-section">
+<div class="title-section" id="proyectos">
 	Nuestros Proyectos
 </div>
 
@@ -74,23 +76,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<img src="<?php  echo base_url() ?>/assets/property_1.jpg" alt="">
 			</div>
 			<div class="name-proyect">
-					Diamante I
+					Edificio Lorena
 			</div>
 			<div class="name-city">
-				Amagá, Antioquia
+				Medellín, Antioquia
 			</div>
 			<div class="valor">
-				$ 84.900.000
+				Entregado
 			</div>
 			<div class="carateristicas row justify-content-sm-center">
-				<div class="area">
-					<i class="fas fa-drafting-compass">72 M2</i>
-				</div>
 				<div class="room">
-					<i class="fas fa-bed">3 Habitaciones</i>
+					<i class="fas fa-bed"></i>
+					3 Habitaciones &nbsp; &nbsp;
 				</div>
+
 				<div class="bathroom">
-					<i class="fas fa-bath">2 Baños</i>
+					<i class="fas fa-bath"></i>
+					2 Baños
 				</div>
 			</div>
 </div>
@@ -109,13 +111,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class="carateristicas row justify-content-sm-center">
 				<div class="area">
-					<i class="fas fa-drafting-compass">72 M2</i>
+					<i class="fas fa-drafting-compass"></i>
+					72 M2 &nbsp;
 				</div>
 				<div class="room">
-					<i class="fas fa-bed">3 Habitaciones</i>
+					<i class="fas fa-bed"></i>
+					3 Habitaciones  &nbsp;
 				</div>
 				<div class="bathroom">
-					<i class="fas fa-bath">2 Baños</i>
+					<i class="fas fa-bath"></i>
+					2 Baños
 				</div>
 			</div>
 </div>
@@ -124,24 +129,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<img src="<?php  echo base_url() ?>/assets/property_2.jpg" alt="">
 			</div>
 			<div class="name-proyect">
-					Diamante I
+				 Altos de Villa Real
 			</div>
 			<div class="name-city">
-				Amagá, Antioquia
+				Medellín, Antioquia
 			</div>
 			<div class="valor">
-				$ 84.900.000
+				En Planeación
 			</div>
 			<div class="carateristicas row justify-content-sm-center">
 				<div class="area">
-					<i class="fas fa-drafting-compass">72 M2</i>
+					<i class="fas fa-drafting-compass"></i>
+					Desde 52 M2  &nbsp;
 				</div>
-				<div class="room">
-					<i class="fas fa-bed">3 Habitaciones</i>
-				</div>
-				<div class="bathroom">
-					<i class="fas fa-bath">2 Baños</i>
-				</div>
+
 			</div>
 </div>
 </div>
@@ -149,11 +150,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-<div class="title-section">
+<div class="title-section" id="empresa">
 	Nuestra Empresa
 </div>
-<div class="container-nosotros row">
-<div class="col-sm-4">
+<div class="container-nosotros row col-sm-12 row justify-content-sm-center">
+<div class="col-sm-3">
 	<div class="img-icon">
 		<img src="<?php  echo base_url() ?>/assets/nos1.jpg" alt="">
 	</div>
@@ -164,9 +165,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Somos una empresa constructora y promotora de proyectos inmobiliarios.
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 	<div class="img-icon">
-		<img src="<?php  echo base_url() ?>/assets/nos1.jpg" alt="">
+		<img src="<?php  echo base_url() ?>/assets/nos2.jpg" alt="">
 	</div>
 	<div class="subtitle">
 		Enfoque
@@ -175,9 +176,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Nuestros diseños estan enfocados en la familia, queremos que al abrir la puerta de su casa no quieras volver a salir.
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 	<div class="img-icon">
-		<img src="<?php  echo base_url() ?>/assets/nos1.jpg" alt="">
+		<img src="<?php  echo base_url() ?>/assets/nos3.jpg" alt="">
 	</div>
 	<div class="subtitle">
 		Vision
@@ -193,14 +194,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="footer row">
 <div class="info col-sm-6">
 	<div class="title">
-		Contactanos
+	Contactanos
 	</div>
 	<div class="address row">
 		<div class="icon">
 
 		</div>
 		<div class="name">
-			Diagonal 57 N 34-33 Bello
+				Diagonal 57 N 34-33 Bello
 		</div>
 	</div>
 	<div class="email row">
@@ -208,7 +209,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		</div>
 		<div class="name">
-			info@grupodiamante.com.co
+				Email info@grupodiamante.com.co
 		</div>
 	</div>
 	<div class="tel row">
@@ -217,19 +218,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		<div class="name">
 			<div class="">
-				pbx 366 92 28
+					Pbx 366 92 28
 			</div>
 			<div class="">
-					cel 301 609 86 45
+					Cel 301 609 86 45
 			</div>
 		</div>
 	</div>
 </div>
 <div class="Logofooter col-sm-6">
-
+<img src="<?php  echo base_url() ?>/assets/Logo_white-09.png" alt="" style="width:100%">
 </div>
-<div class="col-sm-12">
+<div class="col-sm-12 text-center" style="padding-top: 40px;">
 	Desarrollado por Rabbit.com.co
+	<br>
+	2018
 </div>
 </div>
 
