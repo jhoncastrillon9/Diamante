@@ -23,15 +23,19 @@ class Login_model extends CI_Model
 		//$correo=$_POST['correo'];
 		$pass=$this->input->post("Pass");
 		$email=$this->input->post("Email");
+
+
 		//2. Aplicarle la libreria security
 		$email=$this->security->xss_clean($email);
 		$pass=$this->security->xss_clean($pass);
+		
 		// buscar el usuario
 		//select * from tblusuarios where correo='$correo' and clave=sha1('$clave')
 		// en vez de pasar el query, usaremos la funcion de la base de datos que se llama get_where que pide la tabla y en un vector los parametros a consultar. Este tipo de consultas siempre devuelven un resultado en vector
-
-		$vector=array("email"=>$email,"pass"=>sha1($pass));
+		
+		$vector=array("Email"=>$email,"Pass"=>sha1($pass));
 		$query=$this->db->get_where("usuarios",$vector);
+
 		// cuando realice la consulta que devuelve el resultado
 		return $query->result_array();
 
