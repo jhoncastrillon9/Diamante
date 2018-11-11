@@ -1,0 +1,141 @@
+/*Estilos CrudGrocery Listar tabla Principal*/
+
+#main-table-box form {
+display: grid;
+}
+
+#Custom-Table-Grocery .flexigrid .mDiv {
+display: none;
+}
+
+#main-table-box .tDiv {
+	border: none !important;
+    background: white;
+}
+
+#main-table-box .btnseparator{
+	display: none;
+}
+
+#main-table-box .tDiv .tDiv2 a .fbutton div .add, 
+#main-table-box .tDiv .tDiv3 a .fbutton div .export,
+#main-table-box .tDiv .tDiv3 a .fbutton div .print{    
+    background:  #f8f9fa !important;
+    border-radius: 6px !important;
+    padding: 7px 12px 7px 12px;
+    color: #17a2b8 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    font-weight: bold !important;
+    border: none !important;
+}
+#main-table-box .tDiv .tDiv2 a .fbutton div .add, 
+#main-table-box .tDiv .tDiv3 a .fbutton div .export,
+#main-table-box .tDiv .tDiv3 a .fbutton div .print:hover{    
+    background:  #f8f9fa !important;
+    border-radius: 6px !important;
+    padding: 7px 12px 7px 12px !important;
+    color: #17a2b8 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    font-weight: bold !important;
+    border: none !important;
+}
+
+#quickSearchBox{
+	border: none !important;
+    background: white;
+
+}
+
+#quickSearchBox .qsbsearch_fieldox{
+    padding: 3px 10px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+#quickSearchBox #search_field{
+    padding: 3px 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+#quickSearchBox #crud_search,
+#quickSearchBox #search_clear{
+	background:  #f8f9fa !important;
+    border-radius: 6px !important;
+    padding: 7px 12px 7px 12px;
+    color: #35b084 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    font-weight: bold !important;
+    border: none !important;
+}
+
+#filtering_form .pDiv{
+	border: none !important;
+    background: white;
+}
+
+#per_page, #crud_page{
+	background:  #f8f9fa !important;
+    border-radius: 6px !important;
+    padding: 7px 12px 7px 12px;  
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    border: none !important;
+}
+
+/* FIN Estilos CrudGrocery Listar tabla Principal*/
+
+
+
+/* Estilos CrudGrocery Nuevo tabla Principal*/
+
+#cancel-button, #save-and-go-back-button, #form-button-save{
+    background:  #f8f9fa !important;
+    border-radius: 6px !important;
+    padding: 7px 12px 7px 12px !important;    
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    font-weight: bold !important;
+    border: none !important;
+}
+
+#cancel-button{
+    color: #b81717 !important;
+}
+#save-and-go-back-button{
+    color: #17a2b8 !important;
+}
+
+#form-button-save{
+    color: #17a2b8 !important;
+}
+
+#crudForm .form-div{
+	border: none;
+}
+
+#crudForm .pDiv{
+	border: none;
+}
+
+#crudForm .form-control{
+	padding: 13px 10px;
+    font-size: 1rem;
+}
+
+
+
+/* FIN Estilos CrudGrocery Nuevo tabla Principal*/
+
+

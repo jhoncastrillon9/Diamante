@@ -3,8 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>Admin - Grupo Diamante Constructora SAS</title>
       <?php include("Layouts/Admin_Head.php");?>
+
+      <!-- Estilos de las tablas CrudGrocery -->
+      <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/Admin/css/CustomCrudGrocery.css">
+
+        <?php 
+  if (isset($css_files)) {
+    foreach ($css_files as $rutacss) {
+        ?>
+ <link rel="stylesheet" type="text/css" href="<?php echo $rutacss;?>">
+        <?php
+    }
+  }
+
+  ?>
+
+
 </head>
 
 <body>
@@ -16,21 +33,21 @@
         <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">               
-				<?php include("Layouts/Admin_Widgets.php");?>
-                
+				<?php include("Layouts/Admin_Widgets.php");?>                
 
                 <!--  CONTENIDO DE CADA PAGINA  -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="box-title">Grupo Diamante... </h4>
+                                <h4 class="box-title">Administración de Clientes</h4>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="card-body">
-
-                                    	Selecione una opción.
+                                    <div class="card-body" id="Custom-Table-Grocery">
+                                       
+                                              <!--  CREA LA TABLA  -->
+                                                <?php echo $tabla;?>            
  
                                     </div> <!-- /.card-body -->
                                 </div>
@@ -54,5 +71,18 @@
     </div>
     <!-- /#right-panel -->
     <?php include("Layouts/Admin_Scripts.php");?>
+
+    <?php
+    if (isset($js_files)) {
+        foreach ($js_files as $rutajs) {
+            ?>
+<script type="text/javascript" src="<?php echo $rutajs;?>"></script>            
+            <?php
+        }
+    }
+
+?>
+
+
 </body>
 </html>
