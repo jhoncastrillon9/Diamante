@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 controlador Para los clientes
 
 */
-class AdminClientes extends CI_Controller {
+class AdminUsuarios extends CI_Controller {
 
 	public function __construct() {
 		parent:: __construct();
@@ -22,25 +22,19 @@ class AdminClientes extends CI_Controller {
 	{	
 		$crud=new grocery_CRUD();
 		$crud->set_theme('flexigrid');
-		$crud->set_table('clientes'); 
-		$crud->set_subject('Cliente');	
-		//Relaciones entre tablas
-		$crud->set_relation("IdProyecto","proyectos","Nombre");
-		$crud->set_relation("IdTipoDocumento","tiposdocumento","Nombre");
-		$crud->set_relation("IdCiudad","ciudades","Nombre");
+		$crud->set_table('usuarios'); 
+		$crud->set_subject('Usuario');	
+		//Relaciones entre tablas		
+		$crud->set_relation("IdRol","roles","Nombre");		
 		//Los campos que el usuario verá en forma de agregar y editar.
-		$crud->fields("IdTipoDocumento","Documento","Nombre","Telefono","Direccion","IdCiudad","IdProyecto");
+		$crud->fields("Nombre","IdRol","Email");
 		//Los campos que el usuario verá en forma de agregar y editar Y SON OBLIGATORIOS.
-		$crud->required_fields("IdTipoDocumento","Documento","Nombre","Telefono", "IdCiudad");		
-		$crud->unique_fields(array("Documento"));
+		$crud->required_fields("Nombre","IdRol","Email");		
+		$crud->unique_fields(array("Email"));
 		//Cambiar el nombre del campo por otro
-		$crud->display_as("IdTipoDocumento","Tipo de Documento");
-		$crud->display_as("Telefono","Teléfono");
-		$crud->display_as("Direccion","Dirección");
-		$crud->display_as("IdProyecto","Proyecto");
-		$crud->display_as("IdCiudad","Ciudad");
+		$crud->display_as("IdRol","Tipo de Usuario");
 		//Las columnas mostradas que son visibles para el usuario finalmente en el datagrid o tabla principal
-		$crud->columns("IdTipoDocumento","Documento","Nombre","Telefono","IdCiudad","IdProyecto");
+		$crud->columns("Nombre","Email","IdRol");
 
 		$tabla=$crud->render();
 		$vector['tabla']=$tabla->output;
@@ -51,7 +45,7 @@ class AdminClientes extends CI_Controller {
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
-		$this->load->view('AdminClientes',$vector);
+		$this->load->view('AdminProveedores',$vector);
 	}
 
 }

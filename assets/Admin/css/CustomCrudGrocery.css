@@ -93,6 +93,10 @@ display: none;
     border-color: #f8f9fa !important;
     border: none !important;
 }
+#main-table-box .tDiv{
+margin-bottom: 20px;
+}
+
 
 /* FIN Estilos CrudGrocery Listar tabla Principal*/
 

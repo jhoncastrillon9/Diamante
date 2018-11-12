@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Grupo Diamante - Clientes</title>
+    <title>Grupo Diamante - Medidas Presupuestos</title>
       <?php include("Layouts/Admin_Head.php");?>
 
       <!-- Estilos de las tablas CrudGrocery -->
@@ -40,7 +40,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="box-title">Administración de Clientes</h4>
+                                <h4 class="box-title">Administración de Medidas</h4>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">

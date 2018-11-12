@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 controlador Para los clientes
 
 */
-class AdminClientes extends CI_Controller {
+class AdminProyectos extends CI_Controller {
 
 	public function __construct() {
 		parent:: __construct();
@@ -22,25 +22,20 @@ class AdminClientes extends CI_Controller {
 	{	
 		$crud=new grocery_CRUD();
 		$crud->set_theme('flexigrid');
-		$crud->set_table('clientes'); 
-		$crud->set_subject('Cliente');	
+		$crud->set_table('proyectos'); 
+		$crud->set_subject('Proyecto');	
 		//Relaciones entre tablas
-		$crud->set_relation("IdProyecto","proyectos","Nombre");
-		$crud->set_relation("IdTipoDocumento","tiposdocumento","Nombre");
 		$crud->set_relation("IdCiudad","ciudades","Nombre");
 		//Los campos que el usuario verá en forma de agregar y editar.
-		$crud->fields("IdTipoDocumento","Documento","Nombre","Telefono","Direccion","IdCiudad","IdProyecto");
+		$crud->fields("Nombre","Direccion","IdCiudad");
 		//Los campos que el usuario verá en forma de agregar y editar Y SON OBLIGATORIOS.
-		$crud->required_fields("IdTipoDocumento","Documento","Nombre","Telefono", "IdCiudad");		
-		$crud->unique_fields(array("Documento"));
+		$crud->required_fields("Nombre","Direccion","IdCiudad");		
+		$crud->unique_fields(array("Nombre"));
 		//Cambiar el nombre del campo por otro
-		$crud->display_as("IdTipoDocumento","Tipo de Documento");
-		$crud->display_as("Telefono","Teléfono");
-		$crud->display_as("Direccion","Dirección");
-		$crud->display_as("IdProyecto","Proyecto");
+		$crud->display_as("Direccion","Dirección");		
 		$crud->display_as("IdCiudad","Ciudad");
 		//Las columnas mostradas que son visibles para el usuario finalmente en el datagrid o tabla principal
-		$crud->columns("IdTipoDocumento","Documento","Nombre","Telefono","IdCiudad","IdProyecto");
+		$crud->columns("Nombre","Direccion","IdCiudad");
 
 		$tabla=$crud->render();
 		$vector['tabla']=$tabla->output;
@@ -51,7 +46,7 @@ class AdminClientes extends CI_Controller {
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
-		$this->load->view('AdminClientes',$vector);
+		$this->load->view('AdminProyectos',$vector);
 	}
 
 }
