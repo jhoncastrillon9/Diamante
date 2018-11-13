@@ -12,7 +12,9 @@ class AdminPresupuestos extends CI_Controller {
 		
 		$this->load->library("grocery_CRUD");
 		$this->TblPresupuestos= "presupuestos";	
+		$this->TblDetallePresupuestos= "view_detallepresupuesto";	
 		$this->TblProyectos= "proyectos";
+		$this->TblCategorias= "categoriapresupuestos";		
 	 	$this->load->model('Presupuestos_model');	
 
 		if (!$this->session->userdata("IdUsuario")) {
@@ -56,7 +58,9 @@ class AdminPresupuestos extends CI_Controller {
 
 		$vector["Header_Presupuesto"] = $this->Presupuestos_model->HeaderPresupuesto($id);
 		$IdProyecto= $vector["Header_Presupuesto"][0]["IdProyecto"];
-		$vector["NombreProyecto"] = $this->Presupuestos_model->NombreProyecto($IdProyecto);      
+		$vector["Proyecto"] = $this->Presupuestos_model->Proyecto($IdProyecto);			
+		$vector["Detalles"]= $this->Presupuestos_model->DetallesPresupuesto($id);
+		$vector["Categorias"]= $this->Presupuestos_model->Categorias();
 
 		$this->load->view('AdminPresupuestoDetalle',$vector);
 	}

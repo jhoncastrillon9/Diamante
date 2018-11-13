@@ -9,7 +9,7 @@ class AdminItemsp extends CI_Controller {
 	public function __construct() {
 		parent:: __construct();
 		// cargar la libreria del rud grocery
-		
+		$this->TblItemsp= "itemspresupuestos";		
 		$this->load->library("grocery_CRUD");
 
 		if (!$this->session->userdata("IdUsuario")) {
@@ -45,6 +45,12 @@ class AdminItemsp extends CI_Controller {
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
 		$this->load->view('AdminItemsp',$vector);
+	}
+
+	public function GetItemsId($Id)
+	{			
+		$vector["Items"]= $this->Items_model->Categorias($Id);
+		echo $vector;
 	}
 }
 

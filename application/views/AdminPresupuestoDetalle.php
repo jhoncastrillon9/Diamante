@@ -11,7 +11,8 @@
       <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/Admin/css/CustomCrudGrocery.css">
       <!-- Estilos de las tablas Main General -->
       <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/Admin/css/MainGeneral.css">
-
+      <!-- Boostrap 4 -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -29,22 +30,23 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body padding-b-0">
                                 <?php 
                                     $nombre= $Header_Presupuesto[0]['Nombre'];
-                                    $proyecto= $NombreProyecto[0]['Nombre'];
+                                    $proyecto= $Proyecto[0]['Nombre'];
                                     $valor= $Header_Presupuesto[0]['Valor'];                                                                                                 
-                                ?> 
+                                ?>                                 
                                 <h4 class="box-title">
-                                    <span><?php echo  $nombre?></span>
+                                    <span>Presupuesto: <?php echo  $nombre?></span>
                                     <span>, Proyecto: <?php echo  $proyecto?></span>
                                     <span>, Valor : $<?php echo  $valor?></span>  
-                                </h4>
+                                </h4>                                
                             </div>
+                            
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="card-body" id="Custom-Table-Grocery">
-
+                                    <div class="card-body padding-t-0" id="Custom-Table-Grocery">
+                                    <div class="col-lg-2 btn-blue-general" data-toggle="modal" data-target=".modal-new-detalle">Agregar Item</div>
                                         <div>
                                             <table class="table table-hover">
                                             <thead>
@@ -53,47 +55,106 @@
                                                 <th scope="col">Categoria</th>
                                                 <th scope="col">Item</th>
                                                 <th scope="col">Un</th>
-                                                <th scope="col">Valor U.</th>
+                                                <th scope="col">Valor</th>
                                                 <th scope="col">Cantidad</th>
                                                 <th scope="col">Subtotal</th>
+                                                <th scope="col">Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>Otto</td>
-                                                <td>Otto</td>
-                                                <td>
-                                                <div class="stat-icon dib flat-color-1">
-                                                    <i class="pe-7s-plus font-sise-24"></i>
-                                                </div>
-                                                <div class="stat-icon dib flat-color-4">
-                                                    <i class="pe-7s-close-circle font-sise-24"></i>
-                                                </div>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>Otto</td>
-                                                <td>Otto</td>
-                                                <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                <th scope="row">3</th>
-                                                <td colspan="2">Larry the Bird</td>
-                                                <td>@twitter</td>
-                                                <td>Otto</td>
-                                                <td>Otto</td>
-                                                <td>Otto</td>
-                                                </tr>
+
+                                                <?php                                                 
+                                                    foreach($Detalles as $detalle) 
+                                                    {
+                                                        $Row = "<tr>";
+                                                        $Row .= "<th scope='row'>".$detalle['IdDetalle']."</th>";
+                                                        $Row .= "<td>".$detalle['Categoria']."</td>";
+                                                        $Row .= "<td>".$detalle['Item']."</td>";
+                                                        $Row .= "<td>".$detalle['Medida']."</td>";
+                                                        $Row .= "<td>".$detalle['ValorUnitario']."</td>";
+                                                        $Row .= "<td>".$detalle['Cantidad']."</td>";
+                                                        $Row .= "<td>".$detalle['Cantidad']*$detalle['ValorUnitario']."</td>";                                                     
+                                                        $Row .= "<td>";
+                                                        $Row .= "<div class='stat-icon dib flat-color-1'>";
+                                                        $Row .= "<i class='pe-7s-plus font-sise-24 font-bold'></i>";
+                                                        $Row .= "</div>";
+                                                        $Row .= "<div class='stat-icon dib flat-color-4'>";
+                                                        $Row .= "<i class='pe-7s-close-circle font-sise-24 font-bold'></i>";
+                                                        $Row .= "</div>";
+                                                        $Row .= "</td>";
+                                                        $Row .= "</tr>";
+                                                        echo $Row;
+                                                    }                                                
+                                                ?>
+
                                             </tbody>
                                             </table>
+                                            <!-- Modal de nuevo registro -->
+                                            <div class="modal fade modal-new-detalle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Ingresar Item a presupuesto</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>                                                            
+                                                            <th scope="col">Categoria</th>
+                                                            <th scope="col">Item</th>
+                                                            <th scope="col">Un</th>
+                                                            <th scope="col">Valor</th>
+                                                            <th scope="col">Cantidad</th>
+                                                            <th scope="col">Subtotal</th>                                                           
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <!--Categorias-->                                                                
+                                                                <td scope="col">
+                                                                    <select class="form-control" id="DrowCategoria"> 
+                                                                        <option Value="" >Selecione...</option>                                                                                                                                 
+                                                                        <?php                                                 
+                                                                            foreach($Categorias as $categoria) 
+                                                                            {
+                                                                                $Select = "<option value=".$categoria['Id'].">";
+                                                                                $Select .= "".$categoria['Nombre']."</option>";
+                                                                                echo $Select;
+                                                                            }                                                
+                                                                        ?>
+                                                                    </select>
+                                                                </td>
+                                                                <!--Items--> 
+                                                                <td scope="col">
+                                                                    <select class="form-control" id="DrowItem"> 
+                                                                                                                                                                                                    
+
+                                                                    </select>
+                                                                </td>
+                                                                <td scope="col">Un</td>
+                                                                <td scope="col">
+                                                                    <input type="number" class="form form-control" value="0">
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <input type="number" class="form form-control" value="0">
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <input type="number" class="form form-control" placeholder="0" readonly="readonly">
+                                                                </td>                                                           
+                                                            </tr>
+                                                        </tbody>
+                                                        </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-primary">Guardar</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
                                         </div>          
  
                                     </div> <!-- /.card-body -->
@@ -102,11 +163,9 @@
                             <div class="card-body"></div>
                         </div>
                     </div><!-- /# column -->
-                </div>                
+                </div>
                 <div class="clearfix"></div> 
                 <!--  FIN CONTENIDO DE CADA PAGINA  -->
-
-
             </div>
             <!-- .animated -->
         </div>
@@ -117,7 +176,51 @@
         
     </div>
     <!-- /#right-panel -->
-    <?php include("Layouts/Admin_Scripts.php");?>
+    <?php include("Layouts/Admin_Scripts.php");?> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $("#DrowCategoria").change(function()
+            {
+                var Cat_id = $(this).val();
+                if (Cat_id != '') 
+                {
+                    alert("The text has been changed. Id Seelct: " + Cat_id);
+                    //invocar ajax
+                    $.ajax({
+                        data: Cat_id,
+                        url : "<?php echo site_url('AdminItemsp/GetItemsId')?>",
+                        type: "Post",
+                        beforesend:function(){
+                            //Antes de hacer de la peticion
+                            //$("#mensaje_"+pos).show();
+                            //$("#mensaje_"+pos).html(" <span class='btn btn-info'>Procesando</span>");
+                            alert("Antes de AJAX");
+                        },
+                        success:function(response){ 
+                            // <?php                                                 
+                            // foreach($response as $item) 
+                            //     {
+                            //         $Select = "<option value=".$item['Id'].">";
+                            //         $Select .= "".$item['Nombre']."</option>";                            
+                            //     }                                                
+                            // ?>
+                            // $("#DrowItem").append($Select);                
+                            alert("DESPUES DE AJAX");
+                        },
+                        error:function(jqXHR, textStatus, errorthrown){
+                            alert("Error 250");
+                        }
+
+                    });            
+                } 
+            
+                
+            });
+        });
+    </script>
+ 
 
 </body>
 </html>
