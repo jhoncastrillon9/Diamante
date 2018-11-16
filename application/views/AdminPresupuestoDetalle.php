@@ -114,7 +114,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <!--Categorias-->                                                                
-                                                                <td scope="col">
+                                                                <td scope="col-md-2">
                                                                     <select class="form-control" id="DrowCategoria"> 
                                                                         <option Value="" >Selecione...</option>                                                                                                                                 
                                                                         <?php                                                 
@@ -128,21 +128,25 @@
                                                                     </select>
                                                                 </td>
                                                                 <!--Items--> 
-                                                                <td scope="col">
+                                                                <td scope="col-md-2">
                                                                     <select class="form-control" id="DrowItem"> 
                                                                                                                                                                                                     
 
                                                                     </select>
                                                                 </td>
-                                                                <td scope="col">Un</td>
-                                                                <td scope="col">
-                                                                    <input type="number" class="form form-control" value="0">
+                                                                <!--Unidad de Medida-->
+                                                                <td scope="col-md-1" id="Input-Un">Un</td>
+                                                                <!--Unidad de Valor-->
+                                                                <td scope="col-md-2">
+                                                                    <input type="number" id="Input-Valor" class="form form-control" value="0">
                                                                 </td>
-                                                                <td scope="col">
-                                                                    <input type="number" class="form form-control" value="0">
+                                                                <!--Cantidad-->
+                                                                <td scope="col-md-1">
+                                                                    <input type="number" id="Input-Cantidad" class="form form-control" value="0">
                                                                 </td>
-                                                                <td scope="col">
-                                                                    <input type="number" class="form form-control" placeholder="0" readonly="readonly">
+                                                                <!--Total-->
+                                                                <td scope="col-md-2">
+                                                                    <input type="number" id="Input-Total" class="form form-control" placeholder="0" readonly="readonly">
                                                                 </td>                                                           
                                                             </tr>
                                                         </tbody>
@@ -178,47 +182,10 @@
     <!-- /#right-panel -->
     <?php include("Layouts/Admin_Scripts.php");?> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="<?php  echo base_url() ?>/assets/Admin/js/underscore.js"></script>
+    <script src="<?php  echo base_url() ?>/assets/Admin/js/presupuestos.js"></script>
     <script>
-        $(document).ready(function()
-        {
-            $("#DrowCategoria").change(function()
-            {
-                var Cat_id = $(this).val();
-                if (Cat_id != '') 
-                {
-                    alert("The text has been changed. Id Seelct: " + Cat_id);
-                    //invocar ajax
-                    $.ajax({
-                        data: Cat_id,
-                        url : "<?php echo site_url('AdminItemsp/GetItemsId')?>",
-                        type: "Post",
-                        beforesend:function(){
-                            //Antes de hacer de la peticion
-                            //$("#mensaje_"+pos).show();
-                            //$("#mensaje_"+pos).html(" <span class='btn btn-info'>Procesando</span>");
-                            alert("Antes de AJAX");
-                        },
-                        success:function(response){ 
-                            // <?php                                                 
-                            // foreach($response as $item) 
-                            //     {
-                            //         $Select = "<option value=".$item['Id'].">";
-                            //         $Select .= "".$item['Nombre']."</option>";                            
-                            //     }                                                
-                            // ?>
-                            // $("#DrowItem").append($Select);                
-                            alert("DESPUES DE AJAX");
-                        },
-                        error:function(jqXHR, textStatus, errorthrown){
-                            alert("Error 250");
-                        }
-
-                    });            
-                } 
-            
-                
-            });
-        });
+       
     </script>
  
 

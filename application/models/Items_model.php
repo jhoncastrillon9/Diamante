@@ -14,13 +14,18 @@ class Items_model extends CI_Model
 		// este helper permite validar sql injection, CSFS, XSS, entre otros
 		$this->load->helper('security');
 	}
-	// crear una funcion que nos permita validar la existencia del usuario
-	// en el modelo lo unico que se hara es una consulta a la tabla
-	// y el resultado sea positivo o negativo lo evalua el controlador
-	function DetallesPresupuesto($id)
+
+	function GetAllItemsByCategory($id)
 	{
-		$data=array("IdPresupuesto"=>$id);
-		$query = $this->db->get_where($this->TblDetallePresupuestos,$data);
+		$data=array("IdCategoria"=>$id);
+		$query = $this->db->get_where($this->TblItemsp,$data);
+		return $query->result_array();
+	}
+
+	function GetItemById($id)
+	{
+		$data=array("Id"=>$id);
+		$query = $this->db->get_where($this->ViewItemsp,$data);
 		return $query->result_array();
 	}
 

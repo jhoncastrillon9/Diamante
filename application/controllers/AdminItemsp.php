@@ -9,7 +9,9 @@ class AdminItemsp extends CI_Controller {
 	public function __construct() {
 		parent:: __construct();
 		// cargar la libreria del rud grocery
-		$this->TblItemsp= "itemspresupuestos";		
+		$this->TblItemsp= "itemspresupuestos";
+		$this->ViewItemsp= "view_itemspresupuesto";
+		$this->load->model('Items_model');			
 		$this->load->library("grocery_CRUD");
 
 		if (!$this->session->userdata("IdUsuario")) {
@@ -47,11 +49,18 @@ class AdminItemsp extends CI_Controller {
 		$this->load->view('AdminItemsp',$vector);
 	}
 
-	public function GetItemsId($Id)
+	public function GetItemsByCategory($Id)
 	{			
-		$vector["Items"]= $this->Items_model->Categorias($Id);
-		echo $vector;
+		$Items['Items']= $this->Items_model->GetAllItemsByCategory($Id);		
+		echo json_encode($Items);		
 	}
+
+	public function GetItemById($Id)
+	{			
+		$Item['Item']= $this->Items_model->GetItemById($Id);		
+		echo json_encode($Item);		
+	}
+	
 }
 
 
