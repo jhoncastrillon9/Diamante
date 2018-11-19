@@ -83,9 +83,9 @@
                                                         $Row .= "<td>".$detalle['Cantidad']."</td>";
                                                         $Row .= "<td>".$detalle['Cantidad']*$detalle['ValorUnitario']."</td>";                                                     
                                                         $Row .= "<td>";
-                                                        $Row .= "<div class='stat-icon dib flat-color-1' >";
-                                                        $Row .= "<i class='pe-7s-plus font-sise-24 font-bold'></i>";
-                                                        $Row .= "</div>";
+                                                        //$Row .= "<div class='stat-icon dib flat-color-1' >";
+                                                        //$Row .= "<i class='pe-7s-plus font-sise-24 font-bold'></i>";
+                                                        //$Row .= "</div>";
                                                         $Row .= "<div class='stat-icon dib flat-color-4' onclick='eliminarDetalle(".$detalle['IdDetalle'].")'>";
                                                         $Row .= "<i class='pe-7s-close-circle font-sise-24 font-bold'></i>";
                                                         $Row .= "</div>";

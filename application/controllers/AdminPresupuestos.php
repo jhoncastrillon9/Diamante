@@ -40,9 +40,13 @@ class AdminPresupuestos extends CI_Controller {
 		//Cambiar el nombre del campo por otro
 		$crud->display_as("IdTipoDocumento","Tipo de Documento");		
 		//Las columnas mostradas que son visibles para el usuario finalmente en el datagrid o tabla principal
-		$crud->columns("Nombre","Valor","IdProyecto");
-
+		$crud->columns("Nombre","Valor","IdProyecto"); 
+		
+		$crud->add_action('Detallar Presupuesto', base_url()."/assets/Icon/list.png", 'AdminPresupuestos/Detalle');
+		$crud->unset_read();
+		$crud->unset_clone();
 		$tabla=$crud->render();
+		
 		$vector['tabla']=$tabla->output;
 		$vector['css_files']=$tabla->css_files;
 		$vector['js_files']=$tabla->js_files;
