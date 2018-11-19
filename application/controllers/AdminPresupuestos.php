@@ -12,7 +12,8 @@ class AdminPresupuestos extends CI_Controller {
 		
 		$this->load->library("grocery_CRUD");
 		$this->TblPresupuestos= "presupuestos";	
-		$this->TblDetallePresupuestos= "view_detallepresupuesto";	
+		$this->TblDetallePresupuestos= "view_detallepresupuesto";
+		$this->TblDetalle= "detallepresupuestos";	
 		$this->TblProyectos= "proyectos";
 		$this->TblCategorias= "categoriapresupuestos";		
 	 	$this->load->model('Presupuestos_model');	
@@ -55,14 +56,40 @@ class AdminPresupuestos extends CI_Controller {
 
 	public function Detalle($id)
 	{
-
 		$vector["Header_Presupuesto"] = $this->Presupuestos_model->HeaderPresupuesto($id);
 		$IdProyecto= $vector["Header_Presupuesto"][0]["IdProyecto"];
 		$vector["Proyecto"] = $this->Presupuestos_model->Proyecto($IdProyecto);			
 		$vector["Detalles"]= $this->Presupuestos_model->DetallesPresupuesto($id);
 		$vector["Categorias"]= $this->Presupuestos_model->Categorias();
+		$vector["total"]=$this->Presupuestos_model->total_presupuesto($id);	
 
 		$this->load->view('AdminPresupuestoDetalle',$vector);
+	}
+
+	public function AgregarDetalle()
+	{		
+		//si devuelve una respeusta positiv ejecutar otra funcion del mismo modelo que se llame carrito y esa respuesta la usaremso apra pintar el control html que dice "el pedido va en tanto ...."
+		$respuesta = $this->Presupuestos_model->agregar_detalle();
+		//si el proceso se realiza la idea es devolverle al ajax en cuandot va la compra para listarlo en la parte de //arriba
+		if ($respuesta) {
+			$total=$this->Presupuestos_model->total_presupuesto(null);	
+		}
+
+		echo ", Valor : $".$total;
+	}
+
+	public function TotalPresupuesto()
+	{		
+		//si devuelve una respeusta positiv ejecutar otra funcion del mismo modelo que se llame carrito y esa respuesta la usaremso apra pintar el control html que dice "el pedido va en tanto ...."
+		$total = $this->Presupuestos_model->total_presupuesto(null);
+		echo ", Valor : $".$total;
+	}
+
+	public function eliminarDetalle()
+	{	
+		$respuesta = $this->Presupuestos_model->eliminar_detalle();
+
+		return true;
 	}
 
 }

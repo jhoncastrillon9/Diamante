@@ -32,15 +32,23 @@
                         <div class="card">
                             <div class="card-body padding-b-0">
                                 <?php 
+                                    $IdPresupuesto= $Header_Presupuesto[0]['Id'];
                                     $nombre= $Header_Presupuesto[0]['Nombre'];
                                     $proyecto= $Proyecto[0]['Nombre'];
-                                    $valor= $Header_Presupuesto[0]['Valor'];                                                                                                 
+                                    $valor= $Header_Presupuesto[0]['Valor'];   
+                                    $total= $total;                                                                                               
                                 ?>                                 
                                 <h4 class="box-title">
                                     <span>Presupuesto: <?php echo  $nombre?></span>
                                     <span>, Proyecto: <?php echo  $proyecto?></span>
-                                    <span>, Valor : $<?php echo  $valor?></span>  
-                                </h4>                                
+                                    <span id="total_presupuesto">, Total: $<?php echo  $total?></span>
+                                    <input type="hidden" id="IdPresupuesto" value="<?php echo $IdPresupuesto ?>">  
+                                </h4>
+                                <br/>   
+                                <div id="mensajeGeneral"></div>
+                                <input id="url_site" type="hidden" value="<?php  echo site_url() ?>">                           
+                                <br/>
+                                                         
                             </div>
                             
                             <div class="row">
@@ -75,10 +83,10 @@
                                                         $Row .= "<td>".$detalle['Cantidad']."</td>";
                                                         $Row .= "<td>".$detalle['Cantidad']*$detalle['ValorUnitario']."</td>";                                                     
                                                         $Row .= "<td>";
-                                                        $Row .= "<div class='stat-icon dib flat-color-1'>";
+                                                        $Row .= "<div class='stat-icon dib flat-color-1' >";
                                                         $Row .= "<i class='pe-7s-plus font-sise-24 font-bold'></i>";
                                                         $Row .= "</div>";
-                                                        $Row .= "<div class='stat-icon dib flat-color-4'>";
+                                                        $Row .= "<div class='stat-icon dib flat-color-4' onclick='eliminarDetalle(".$detalle['IdDetalle'].")'>";
                                                         $Row .= "<i class='pe-7s-close-circle font-sise-24 font-bold'></i>";
                                                         $Row .= "</div>";
                                                         $Row .= "</td>";
@@ -99,62 +107,69 @@
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <table class="table table-hover">
-                                                        <thead>
-                                                            <tr>                                                            
-                                                            <th scope="col">Categoria</th>
-                                                            <th scope="col">Item</th>
-                                                            <th scope="col">Un</th>
-                                                            <th scope="col">Valor</th>
-                                                            <th scope="col">Cantidad</th>
-                                                            <th scope="col">Subtotal</th>                                                           
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <!--Categorias-->                                                                
-                                                                <td scope="col-md-2">
-                                                                    <select class="form-control" id="DrowCategoria"> 
-                                                                        <option Value="" >Selecione...</option>                                                                                                                                 
-                                                                        <?php                                                 
-                                                                            foreach($Categorias as $categoria) 
-                                                                            {
-                                                                                $Select = "<option value=".$categoria['Id'].">";
-                                                                                $Select .= "".$categoria['Nombre']."</option>";
-                                                                                echo $Select;
-                                                                            }                                                
-                                                                        ?>
-                                                                    </select>
-                                                                </td>
-                                                                <!--Items--> 
-                                                                <td scope="col-md-2">
-                                                                    <select class="form-control" id="DrowItem"> 
-                                                                                                                                                                                                    
+                                                <div class="modal-body">                
+                                                    <div class="row title-modal-table">
+                                                            <div class="col-md-2"><h6>Categoria</h6></div>
+                                                            <div class="col-md-3"><h6>Item</h6></div>
+                                                            <div class="col-md-1"><h6>Un</h6></div>
+                                                            <div class="col-md-2"><h6>Valor</h6></div>
+                                                            <div class="col-md-2"><h6>Cant</h6></div>
+                                                            <div class="col-md-2"><h6>Total</h6></div>   
+                                                    </div> 
 
-                                                                    </select>
-                                                                </td>
-                                                                <!--Unidad de Medida-->
-                                                                <td scope="col-md-1" id="Input-Un">Un</td>
-                                                                <!--Unidad de Valor-->
-                                                                <td scope="col-md-2">
-                                                                    <input type="number" id="Input-Valor" class="form form-control" value="0">
-                                                                </td>
-                                                                <!--Cantidad-->
-                                                                <td scope="col-md-1">
-                                                                    <input type="number" id="Input-Cantidad" class="form form-control" value="0">
-                                                                </td>
-                                                                <!--Total-->
-                                                                <td scope="col-md-2">
-                                                                    <input type="number" id="Input-Total" class="form form-control" placeholder="0" readonly="readonly">
-                                                                </td>                                                           
-                                                            </tr>
-                                                        </tbody>
-                                                        </table>
+                                                        <?php 
+                                                            $atributos = array("id"=>"formapresupuesto");
+                                                            echo form_open("AdminPresupuestos/AgregarDetalle", $atributos) 
+                                                        ?>
+                                                            <div class="row">                                                                    
+                                                                    <!--Categorias--> 
+                                                                    <div class="col-md-2">
+                                                                        <select class="form-control" id="DrowCategoria" onblur="calculartotal()" required> 
+                                                                                    <option Value="" >Selecione...</option>                                                                                                                                 
+                                                                                    <?php                                                 
+                                                                                        foreach($Categorias as $categoria) 
+                                                                                        {
+                                                                                            $Select = "<option value=".$categoria['Id'].">";
+                                                                                            $Select .= "".$categoria['Nombre']."</option>";
+                                                                                            echo $Select;
+                                                                                        }                                                
+                                                                                    ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <!--Items-->
+                                                                    <div class="col-md-3">
+                                                                        <select class="form-control" id="DrowItem" onblur="calculartotal()" required>                                                                                         
+
+                                                                        </select>
+                                                                    </div>
+                                                                    <!--Unidad de Medida-->
+                                                                    <div class="col-md-1" id="Input-Un" onblur="calculartotal()"></div>
+                                                                <!--Valor Sugerido-->
+                                                                    <div class="col-md-2">
+                                                                    <input type="number" id="Input-Valor" class="form form-control" value="0" onblur="calculartotal()" required>
+                                                                    </div>
+                                                                    <!--Cantidad-->
+                                                                    <div class="col-md-2">
+                                                                        <input type="number" id="Input-Cantidad" class="form form-control" value="0" onblur="calculartotal()" required>
+                                                                    </div>
+                                                                    <!--Subtotal-->
+                                                                    <div class="col-md-2">
+                                                                        <input type="number" id="Input-Total" class="form form-control" placeholder="0" readonly="readonly">
+                                                                    </div>   
+                                                            </div> 
+
+                                                         </form>
+
+                                                         <br/>                                    
+                                                         <br/>                                    
+                                                         <div id="mensaje">
+                                                                                        
+                                                        </div>
+                                                   
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                    <button type="button" class="btn btn-primary">Guardar</button>
+                                                    <button type="button" class="btn btn-primary" onclick="agregar()">Guardar</button>
                                                 </div>
                                                 </div>
                                             </div>
