@@ -27,14 +27,18 @@ class AdminUsuarios extends CI_Controller {
 		//Relaciones entre tablas		
 		$crud->set_relation("IdRol","roles","Nombre");		
 		//Los campos que el usuario verá en forma de agregar y editar.
-		$crud->fields("Nombre","IdRol","Email");
+		$crud->fields("Nombre","IdRol","Email","Imagen");
 		//Los campos que el usuario verá en forma de agregar y editar Y SON OBLIGATORIOS.
-		$crud->required_fields("Nombre","IdRol","Email");		
-		$crud->unique_fields(array("Email"));
+		$crud->required_fields("Nombre","IdRol","Email","Imagen");		
+		$crud->unique_fields(array("Email","Imagen"));
 		//Cambiar el nombre del campo por otro
 		$crud->display_as("IdRol","Tipo de Usuario");
 		//Las columnas mostradas que son visibles para el usuario finalmente en el datagrid o tabla principal
-		$crud->columns("Nombre","Email","IdRol");
+		$crud->columns("Imagen","Nombre","Email","IdRol");
+		//iNDICAR QUEES UN CAMNPO PARA CARGAR ARCHIVO
+		$crud->set_field_upload("Imagen","assets/uploads/Usuarios/");
+
+		$crud->unset_clone();
 
 		$tabla=$crud->render();
 		$vector['tabla']=$tabla->output;
@@ -42,10 +46,11 @@ class AdminUsuarios extends CI_Controller {
 		$vector['js_files']=$tabla->js_files;
 		$vector["Documento"]=$this->session->userdata("Documento");
 		$vector["Nombre"]=$this->session->userdata("Nombre");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
-		$this->load->view('AdminProveedores',$vector);
+		$this->load->view('AdminUsuarios',$vector);
 	}
 
 }

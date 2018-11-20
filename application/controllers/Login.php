@@ -37,6 +37,7 @@ class Login extends CI_Controller {
 				"IdUsuario"=>$resultados[0]["IdUsuario"],
 				"Nombre"=>$resultados[0]["Nombre"],
 				"IdPerfil"=>$resultados[0]["IdRol"],
+				"Imagen"=>$resultados[0]["Imagen"],
 				"Email"=>$resultados[0]["Email"]
 			);
 			$this->session->set_userdata($data_session);
