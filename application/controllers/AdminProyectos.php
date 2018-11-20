@@ -66,6 +66,42 @@ class AdminProyectos extends CI_Controller {
 		$this->load->view('AdminProyectosGaleria',$vector);
 	}
 
+	public function AddImagenesGaleria()
+	{	
+		$crud=new grocery_CRUD();
+		$crud->set_theme('flexigrid');
+		$crud->set_table('proyectosimagenes'); 
+		$crud->set_subject('Imagen de Proyecto');	
+		//Relaciones entre tablas
+		$crud->set_relation("IdProyecto","proyectos","Nombre");
+		//Los campos que el usuario verá en forma de agregar y editar.
+		$crud->fields("IdProyecto","UrlImagen","Descripcion");
+		//Los campos que el usuario verá en forma de agregar y editar Y SON OBLIGATORIOS.
+		$crud->required_fields("IdProyecto","UrlImagen","Descripcion");		
+		$crud->unique_fields(array("UrlImagen"));
+		//Cambiar el nombre del campo por otro
+		$crud->display_as("UrlImagen","Imagen");		
+		$crud->display_as("Descripcion","Descripción");
+		//Las columnas mostradas que son visibles para el usuario finalmente en el datagrid o tabla principal
+		$crud->columns("IdProyecto","UrlImagen","Descripcion");
+		//iNDICAR QUEES UN CAMNPO PARA CARGAR ARCHIVO
+		$crud->set_field_upload("UrlImagen","assets/uploads/Proyectos/Generales/");
+		//desactivar opcion de clonar 
+		$crud->unset_clone();
+		$crud->unset_edit();		
+
+		$tabla=$crud->render();
+		$vector['tabla']=$tabla->output;
+		$vector['css_files']=$tabla->css_files;
+		$vector['js_files']=$tabla->js_files;
+		$vector["Documento"]=$this->session->userdata("Documento");
+		$vector["Nombre"]=$this->session->userdata("Nombre");
+		$vector["Telefono"]=$this->session->userdata("Telefono");
+		$vector["Direccion"]=$this->session->userdata("Direccion");
+		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$this->load->view('AdminProyectosAddImagen',$vector);
+	}
+
 }
 
 

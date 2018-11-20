@@ -35,10 +35,18 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Proyectos</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="<?php echo site_url('AdminProyectos
+                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="<?php echo site_url('AdminProyectos')?>">Consultar Proyectos</a></li>
+                            <li><i class="menu-icon ti-themify-logo"></i><a href="<?php echo site_url('AdminProyectos/index/add')?>">Nuevo Proyecto</a></li>                            
+                            <li><i class="menu-icon ti-themify-logo"></i><a href="<?php echo site_url('AdminProyectos/AddImagenesGaleria/add')?>">Agregar Imagenes de Proyectos</a></li>
+                            <li><i class="menu-icon ti-themify-logo"></i><a href="<?php echo site_url('AdminProyectos/AddImagenesGaleria')?>">Imagenes de Proyectos</a></li>
+                        </ul>
+                    </li>
 
-                            ')?>">Consultar Proyectos</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="<?php echo site_url('AdminProyectos/index/add')?>">Nuevo Proyecto</a></li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-id-card-o"></i>Galeria</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-laptop"></i><a href="<?php echo site_url('AdminProyectos/Galeria/1')?>">Diamante I</a></li>
+                            <li><i class="menu-icon fa fa-laptop"></i><a href="<?php echo site_url('AdminProyectos/Galeria/2')?>">Altos de Villa Real</a></li>                                       
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">

@@ -14,7 +14,7 @@
       <!-- Boostrap 4 -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   
-        <link rel="stylesheet" href="<?php  echo base_url() ?>/assets/Admin/css/lightbox.min.css">
+        <link rel="stylesheet" href="<?php  echo base_url() ?>/assets/Admin/css/lightbox.css">
         <style>
                 header{text-align:center;}
                 article img{max-height:180px;}
@@ -44,71 +44,23 @@
                                 ?>                                 
                                 <h2 class="box-title">                                   
                                     <span>Proyecto <?php echo  $proyecto?></span>                                    
-                                </h2>
-                               
-
+                                </h2> 
                                     <div class="container galeria">
                                             <articles class="row">
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img1.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img1.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img2.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img2.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img3.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img3.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img4.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img4.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img5.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img5.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img6.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img6.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img7.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img7.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img8.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img8.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img9.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img9.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img10.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img10.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-                                                <article class="col-md-3">
-                                                    <a href="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img11.jpg" data-lightbox="example-set" data-title="Regala">
-                                                    <img src="<?php  echo base_url() ?>/assets\uploads\Proyectos\Generales\img11.jpg"></a>
-                                                    <p>Regala</p>
-                                                </article>
-
+                                                <?php 
+                                                    foreach ($Imagenes as $imagen) 
+                                                    {
+                                                        $article="";
+                                                        $article = "<article class='col-md-3'>";    
+                                                        $article .= "<a href='". base_url()."\assets\uploads\Proyectos\Generales/".$imagen['UrlImagen']."'  data-lightbox='example-set' data-title='".$imagen['Descripcion']."'>";
+                                                        $article .="<img src='". base_url()."\assets\uploads\Proyectos\Generales/".$imagen['UrlImagen']."' ></a>"; 
+                                                        $article .="<p>".$imagen['Descripcion']."</p>";     
+                                                        $article .= "</article>";                                                    
+                                                        echo $article;    
+                                                    }
+                                                ?>
                                             </articles>
                                     </div>
-
-
                                 
                                 <br/>                         
                                 <br/>                         
@@ -117,8 +69,6 @@
                         </div>
                     </div><!-- /# column -->
                 </div>
-
-
 
                 <div class="clearfix"></div> 
                 <!--  FIN CONTENIDO DE CADA PAGINA  -->
