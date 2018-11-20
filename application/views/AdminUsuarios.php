@@ -47,8 +47,7 @@
                                     <div class="card-body" id="Custom-Table-Grocery">
                                        
                                               <!--  CREA LA TABLA  -->
-                                                <?php echo $tabla;?>  
-                                                <?php echo $Imagen;?>            
+                                                <?php echo $tabla;?>                                                           
  
                                     </div> <!-- /.card-body -->
                                 </div>
