@@ -1,0 +1,28 @@
+#table_items_presupuesto_filter label input{
+    border-radius: 6px;
+    border: none;
+    padding: 5px 8px;
+    background-color: #e3e6e8 !important;
+}
+
+.paginate_button.current{
+    border-radius: 8px !important;
+    padding: 9px 12px 9px 12px;
+    color: #17a2b8 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    font-weight: bold !important;
+    margin-bottom: 15px !important;
+    cursor: pointer !important;
+}
+
+.paginate_button.current:hover{
+    border-radius: 8px !important;
+    padding: 9px 12px 9px 12px;
+    color: #17a2b8 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    font-weight: bold !important;
+    margin-bottom: 15px !important;
+    cursor: pointer !important;
+}

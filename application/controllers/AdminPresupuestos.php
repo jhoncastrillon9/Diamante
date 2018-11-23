@@ -55,6 +55,9 @@ class AdminPresupuestos extends CI_Controller {
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
+
 		$this->load->view('AdminPresupuestos',$vector);
 	}
 
@@ -66,6 +69,13 @@ class AdminPresupuestos extends CI_Controller {
 		$vector["Detalles"]= $this->Presupuestos_model->DetallesPresupuesto($id);
 		$vector["Categorias"]= $this->Presupuestos_model->Categorias();
 		$vector["total"]=$this->Presupuestos_model->total_presupuesto($id);	
+		$vector["Documento"]=$this->session->userdata("Documento");
+		$vector["Nombre"]=$this->session->userdata("Nombre");
+		$vector["Telefono"]=$this->session->userdata("Telefono");
+		$vector["Direccion"]=$this->session->userdata("Direccion");
+		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
 
 		$this->load->view('AdminPresupuestoDetalle',$vector);
 	}
@@ -80,6 +90,36 @@ class AdminPresupuestos extends CI_Controller {
 		}
 
 		echo ", Valor : $".$total;
+	}
+
+	public function DetallesActualizados()
+	{	
+		$idpresupuesto = $this->input->post("idpresupuesto");		
+		$idpresupuesto = $this->security->xss_clean($idpresupuesto);
+		$Detalles = $this->Presupuestos_model->DetallesPresupuesto($idpresupuesto);
+		$Row ="";
+		foreach($Detalles as $detalle) 
+		{
+			$Row .= "<tr>";
+			$Row .= "<th scope='row'>".$detalle['IdDetalle']."</th>";
+			$Row .= "<td>".$detalle['Categoria']."</td>";
+			$Row .= "<td>".$detalle['Item']."</td>";
+			$Row .= "<td>".$detalle['Medida']."</td>";
+			$Row .= "<td>".$detalle['ValorUnitario']."</td>";
+			$Row .= "<td>".$detalle['Cantidad']."</td>";
+			$Row .= "<td>".$detalle['Cantidad']*$detalle['ValorUnitario']."</td>";                                                     
+			$Row .= "<td>";
+			//$Row .= "<div class='stat-icon dib flat-color-1' >";
+			//$Row .= "<i class='pe-7s-plus font-sise-24 font-bold'></i>";
+			//$Row .= "</div>";
+			$Row .= "<div class='stat-icon dib flat-color-4' onclick='eliminarDetalle(".$detalle['IdDetalle'].")'>";
+			$Row .= "<i class='pe-7s-close-circle font-sise-24 font-bold'></i>";
+			$Row .= "</div>";
+			$Row .= "</td>";
+			$Row .= "</tr>";			
+		}  	
+
+		echo $Row;
 	}
 
 	public function TotalPresupuesto()

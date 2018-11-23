@@ -34,6 +34,9 @@ class AdminCategoriasp extends CI_Controller {
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
+		
 		$this->load->view('AdminCategoriasp',$vector);
 	}
 

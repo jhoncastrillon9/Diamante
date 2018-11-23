@@ -152,7 +152,7 @@ function agregar()
 
     if ($("#DrowItem").val()=="") {
         $("#mensaje").fadeIn(0);
-        $("#mensaje").html(" <span  role='alert' class='alert alert-danger'>Debes Selecionar un Item</span>");
+        $("#mensaje").html("<span  role='alert' class='alert alert-danger'>Debes Selecionar un Item</span>");
         $("#mensaje").fadeOut(5000);
         return;
     }
@@ -164,7 +164,7 @@ function agregar()
         type: "Post",
         beforesend:function(){
             $("#mensaje").show();
-            $("#mensaje").html(" <span role='alert' class='alert alert-info'>Procesando</span>");
+            $("#mensaje").html("<span role='alert' class='alert alert-info'>Procesando</span>");
             ContultarTotal()
             
         },
@@ -173,7 +173,8 @@ function agregar()
             $("#total_presupuesto").html(response);
             $("#mensaje").html("<span role='alert' class='alert alert-success'>Agregado</span> ");    
             $("#mensaje").fadeOut(2000);  
-            ContultarTotal()
+            ContultarTotal();            
+            Actualizar_Lista_Items();         
         },
         error:function(jqXHR, textStatus, errorthrown){
 
@@ -232,3 +233,60 @@ function ContultarTotal()
         }
     })
 }
+
+function Actualizar_Lista_Items()
+{
+    parametros = {
+        "idpresupuesto":$("#IdPresupuesto").val()
+      }
+    var ruta = $("#url_site").val() + "/AdminPresupuestos/DetallesActualizados";
+
+    //invocar ajax
+    $.ajax({
+        data :parametros,
+        url : ruta,
+        type: "Post",
+        beforesend:function(){  
+
+        },
+        success:function(response){                       
+            $("#content_table_items").html("");  
+            $("#content_table_items").html(response);                
+        },
+        error:function(jqXHR, textStatus, errorthrown){
+
+        }
+    })
+}
+
+$(document).ready(function() {
+    $('#table_items_presupuesto').DataTable(
+        {
+            language: {
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        } 
+    );
+        
+} );

@@ -49,17 +49,19 @@
                         </div>
             
                     </div>
+                    <div class="user-area dropdown float-right">
+                        Hola, <?php echo $Nombre?>
+                    </div>
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             
                             <img class="user-avatar rounded-circle" src="<?php echo $ruta?>" alt="Foto de Perfil">
                         </a>
-
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Mi Perfil</a>                           
+                            <a class="nav-link" href="<?php echo site_url()?>/AdminUsuarios/index/edit/<?php echo $IdUsuario?>"><i class="fa fa- user"></i>Mi Perfil</a>                           
 
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Salir</a>
+                            <a class="nav-link" href="<?php echo site_url()?>/Salir"><i class="fa fa-power -off"></i>Salir</a>
                         </div>
                     </div>
 

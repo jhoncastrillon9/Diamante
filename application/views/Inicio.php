@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span>Pagos</span>
 				</div>
 				<div class="item col-2">
-					<span>Ingreso</span>
+					<span><a href="<?php echo site_url()?>/Login">Empleados</a></span>
 				</div>
 			</div>
 		</div>

@@ -18,14 +18,15 @@ class AdminDiamante extends CI_Controller {
 
 	public function index()
 	{
-		// a este controlador que carga la vista principal necesitamos pasarle datos
-		// para esto, CI lo permite pero si se pasan en vectores
-		// 1. pasar el nombre del usuario
+		//Variables o vectores a enviar a la lista
 		$vector["usuario"]=$this->session->userdata("Nombe");
-		// se pueden pasar todos los valores que se deseen
-		// en la vista se imprimir lo que este en cada posicion del vector.
-		// esto quiere decir que deseamos imprimir la variable $vector["usuario"]
-		// se hace es $usuario
+		$vector["Documento"]=$this->session->userdata("Documento");
+		$vector["Nombre"]=$this->session->userdata("Nombre");
+		$vector["Telefono"]=$this->session->userdata("Telefono");
+		$vector["Direccion"]=$this->session->userdata("Direccion");
+		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
 
 		$this->load->view('AdminDiamante',$vector);
 	}

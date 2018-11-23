@@ -55,13 +55,23 @@ class AdminProyectos extends CI_Controller {
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
+
 		$this->load->view('AdminProyectos',$vector);
 	}
 
 	public function Galeria($id)
 	{		
 		$vector["Imagenes"]=$this->Proyectos_model->Imagenes($id);
-		$vector["Proyecto"] = $this->Presupuestos_model->Proyecto($id);	
+		$vector["Proyecto"] = $this->Presupuestos_model->Proyecto($id);
+		$vector["Documento"]=$this->session->userdata("Documento");
+		$vector["Nombre"]=$this->session->userdata("Nombre");
+		$vector["Telefono"]=$this->session->userdata("Telefono");
+		$vector["Direccion"]=$this->session->userdata("Direccion");
+		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
 
 		$this->load->view('AdminProyectosGaleria',$vector);
 	}
@@ -99,6 +109,9 @@ class AdminProyectos extends CI_Controller {
 		$vector["Telefono"]=$this->session->userdata("Telefono");
 		$vector["Direccion"]=$this->session->userdata("Direccion");
 		$vector["IdProyecto"]=$this->session->userdata("IdProyecto");
+		$vector["Imagen"]=$this->session->userdata("Imagen");
+		$vector["IdUsuario"]=$this->session->userdata("IdUsuario");
+		
 		$this->load->view('AdminProyectosAddImagen',$vector);
 	}
 

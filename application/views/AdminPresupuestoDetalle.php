@@ -12,7 +12,10 @@
       <!-- Estilos de las tablas Main General -->
       <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/Admin/css/MainGeneral.css">
       <!-- Boostrap 4 -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="<?php  echo base_url() ?>/assets/Admin/css/bootstrap.min.css" > 
+      <!-- Data Tables -->
+      <link rel="stylesheet" href="<?php  echo base_url() ?>/assets/Admin/css/jquery.dataTables.min.css" >     
+      <link rel="stylesheet" href="<?php  echo base_url() ?>/assets/Admin/css/datatables_custom.css" >     
 </head>
 
 <body>
@@ -29,7 +32,8 @@
                 <!--  CONTENIDO DE CADA PAGINA  -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card">
+                        <div class="card">                           
+                            
                             <div class="card-body padding-b-0">
                                 <?php 
                                     $IdPresupuesto= $Header_Presupuesto[0]['Id'];
@@ -56,7 +60,7 @@
                                     <div class="card-body padding-t-0" id="Custom-Table-Grocery">
                                     <div class="col-lg-2 btn-blue-general" data-toggle="modal" data-target=".modal-new-detalle">Agregar Item</div>
                                         <div>
-                                            <table class="table table-hover">
+                                            <table class="table table-hover" id="table_items_presupuesto">
                                             <thead>
                                                 <tr>
                                                 <th scope="col">#</th>
@@ -69,7 +73,7 @@
                                                 <th scope="col">Opciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="content_table_items">
 
                                                 <?php                                                 
                                                     foreach($Detalles as $detalle) 
@@ -196,13 +200,9 @@
     </div>
     <!-- /#right-panel -->
     <?php include("Layouts/Admin_Scripts.php");?> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="<?php  echo base_url() ?>/assets/Admin/js/jquery.min.js" ></script>
     <script src="<?php  echo base_url() ?>/assets/Admin/js/underscore.js"></script>
     <script src="<?php  echo base_url() ?>/assets/Admin/js/presupuestos.js"></script>
-    <script>
-       
-    </script>
- 
-
+    <script src="<?php  echo base_url() ?>/assets/Admin/js/jquery.dataTables.min.js"></script>
 </body>
 </html>
