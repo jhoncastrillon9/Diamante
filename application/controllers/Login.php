@@ -12,20 +12,17 @@ class Login extends CI_Controller {
 		// como esta clase hereda del CI_Controller, apliquemos la funcion que permite heredar el constructor de este
 		parent:: __construct();
 		// cargar el modelo que permite validar si el usuario existe. En la mayoria de los casos los modelos como el controlador y se le agrega la palabra _model y como sucede con el controlador la primera letra en mayuscula
-		$this->load->Model('login_model');
-
+		$this->load->Model('Login_model');
 	}
-
 
 	public function index()
 	{
-		$this->load->view('login');
+		$this->load->view('Login');
 	}
 
 	public function acceso() {
 		// llamar la consulta de la base de datos que se realizo en el login_model
-
-		$resultados=$this->login_model->validar_usuario();
+		$resultados=$this->Login_model->validar_usuario();
 		// acciones a realizar
 		// si encuentra resultados lo mande a principal pero cargando las variables de session
 		// en caso contrario cargamos la vista login. Cuando existan variables de session se recomienda hacer un redireccionador.
@@ -47,12 +44,9 @@ class Login extends CI_Controller {
 
 		} else {
 			// redireccionar hacia login
-
-
-
 			$this->load->view('Login');
 
-			redirect('login');
+			redirect('Login');
 		}
 
 	}

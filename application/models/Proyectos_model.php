@@ -24,5 +24,11 @@ class Proyectos_model extends CI_Model
 		return $query->result_array();
 	}
 
+	function FullProyectos()	
+	{		
+		$query = $this->db->get($this->TblProyectos);
+		return $query->result_array();
+	}
+
 }
 ?>
