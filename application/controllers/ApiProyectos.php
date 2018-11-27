@@ -19,9 +19,12 @@ class ApiProyectos extends CI_Controller {
 
 	public function Proyectos()
 	{	
-		$vector["Proyecto"]= $this->Proyectos_model->FullProyectos();
-		
-		print_r(json_encode($vector));
+		print_r(json_encode($this->Proyectos_model->FullProyectos()));
+	}
+
+	public function ImagenesProyectos($id)
+	{	
+		print_r(json_encode($this->Proyectos_model->ApiImagenesProyecto($id)));
 	}
 	
 
