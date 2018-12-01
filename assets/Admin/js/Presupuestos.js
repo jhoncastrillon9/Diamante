@@ -6,7 +6,7 @@ $(document).ready(function()
         if (Cat_id != '') 
         {
             var base_url = window.location.origin; 
-            //invocar ajax
+            //invocar ajax // cuidado esta mala la url
             $.ajax({                        
                 url : base_url + "/Diamante/index.php/AdminItemsp/GetItemsByCategory/" + Cat_id,
                 type: "Get",
